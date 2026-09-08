@@ -32,6 +32,7 @@ All visual attributes (color, border-radius, spacing, elevation/shadows, z-index
 * `src/styles/global/colors.css`
 * `src/styles/global/tokens.css`
 * `src/styles/global/typography.css`
+* `src/styles/global/fonts.css`
 
 ### Strict Token Rule
 * **Never hardcode raw visual values** (e.g. `#1a1a1a`, `16px`, `12px 24px`) in component styles or inline code.

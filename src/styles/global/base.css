@@ -1,4 +1,4 @@
-@import url("https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=sentient@400,500,700&display=swap");
+@import "./fonts.css";
 @import "./colors.css";
 @import "./tokens.css";
 @import "./typography.css";
