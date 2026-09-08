@@ -1,3 +1,0 @@
-- add to the AGENTS.md, if the user mentions other projects, you can find them on git, or locally: like:
-    - C:\Users\shiri\Code\Gratitude\Gratitude & its github repo
-    - C:\Users\shiri\Code\Closet & its github repo

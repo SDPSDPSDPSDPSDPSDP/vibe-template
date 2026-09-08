@@ -1,7 +1,7 @@
 # AI Startup & Project Scaffolding Guide
 
 > Portable onboarding checklist and prompt template for bootstrapping a new project from the Vibe Template.
-> **Note:** Once a project is scaffolded and launched, this file can be deleted from the repo.
+> **Note:** Once startup is finished on your side, explain to the user what manual steps they still need to complete (such as creating the Vercel project, setting up environment variables in Vercel, etc.). Only then remove `AI-startup-guide.md`.
 
 ---
 
@@ -79,12 +79,15 @@ If Stack Profile is Python:
 - Initialize pyproject.toml / requirements.txt and Python package structure.
 
 Proceed to generate initial schema DDL, API route dispatcher / backend setups, and component shells adhering strictly to these docs.
+
+Once startup is finished on your side, explain clearly to the user what manual steps they still need to complete (e.g. creating the Vercel project, setting up environment variables in Vercel, configuring third-party tokens). Only after explaining these steps should you remove `AI-startup-guide.md`.
 ```
 
 ---
 
 ## 4. Off-Ramp / Post-Launch Cleanup
 
-Once the application is scaffolded, verified, and deployed:
-* **Delete `AI-startup-guide.md`** from the root directory to keep the repository clean.
-* Retain `AGENTS.md`, `docs/ARCHITECTURE.md`, and `docs/CODING-STANDARDS.md` as living documentation.
+Once startup and scaffolding are finished on your side:
+1. **Explain to the user what manual steps they still need to perform** (e.g., create the Vercel project, set up environment variables in Vercel, configure production domain settings).
+2. **Only then remove `AI-startup-guide.md`** from the root directory to keep the repository clean.
+3. **Retain core documentation:** Keep `AGENTS.md`, `docs/ARCHITECTURE.md`, and `docs/CODING-STANDARDS.md` as living documentation.
