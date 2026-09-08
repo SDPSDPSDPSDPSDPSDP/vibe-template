@@ -1,0 +1,17 @@
+name = "<app-name>-media"
+main = "src/index.js"
+compatibility_date = "2026-09-05"
+
+[cache]
+enabled = true
+cross_version_cache = true
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "<r2-bucket-name>"
+
+[triggers]
+crons = ["0 * * * *"]
+
+[vars]
+APP_ORIGIN = "https://REPLACE-ME.vercel.app"
