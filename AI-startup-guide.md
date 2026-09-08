@@ -22,7 +22,9 @@ Before starting code generation for a new app:
    * Fill in [README.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/README.md) with the new project's actual name, description, and overview.
 5. **Configure AGENTS.md Environment Details:**
    * Fill in [AGENTS.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/AGENTS.md) under `## 2. Project Environment & Supabase Config` with the target Supabase Project Ref, Region, URL, and Schema Name.
-6. **Verify Core Documentation:**
+6. **Configure Environment Variables (`.env.local`):**
+   * Copy [.env.example](file:///c:/Users/shiri/Code/Common/Vibe%20Template/.env.example) to `.env.local` and populate all required Supabase and Cloudflare R2 keys (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`).
+7. **Verify Core Documentation:**
    * Ensure [AGENTS.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/AGENTS.md) is present in the repository root.
    * Ensure [docs/ARCHITECTURE.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/ARCHITECTURE.md) and [docs/CODING-STANDARDS.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/CODING-STANDARDS.md) are present.
 
@@ -41,6 +43,7 @@ Before writing code:
 3. Read docs/CODING-STANDARDS.md for CSS design token rules and domain module patterns.
 4. Update README.md with the actual project name and description.
 5. Update AGENTS.md under "Project Environment & Supabase Config" with the target Supabase Project Ref, Region, URL, and Schema Name.
+6. Create .env.local based on .env.example and populate the required Supabase and Cloudflare R2 credentials.
 
 Target App Details:
 - App Name: <app-name>

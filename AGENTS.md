@@ -59,6 +59,9 @@ Before modifying code or designing features, consult the core documentation:
 * **Strict Environment Variables:** Never use inline fallback defaults for environment variables (e.g. `process.env.KEY || 'default'`). Environment variables must either be explicitly set or throw/fail hard immediately.
 * **Exception:** Only implement a fallback behavior when the user **explicitly asks** for it.
 
+### Diagnostic Server Logging for AI Autonomy
+* **Emit rich server-side logs on API routes and server handlers.** AI agents inspect server runtime logs directly (via Vercel/Supabase log tools) to debug failures autonomously. Log request parameters, validation failures, database errors, and full stack traces server-side so you never have to ask the user to manually inspect their browser DevTools. See [docs/CODING-STANDARDS.md#7-structured-diagnostics--server-side-logging](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/CODING-STANDARDS.md#7-structured-diagnostics--server-side-logging).
+
 ### Database Migrations & Schemas
 * **Apply schema changes ONLY via the Supabase MCP tool (`apply_migration`).** Never create hand-written SQL migration files in the repo.
 * **Verify with a real write operation after schema changes.** Reads may succeed on renamed columns or outdated `SECURITY DEFINER` RPCs while writes fail silently.

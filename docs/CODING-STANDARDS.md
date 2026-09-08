@@ -65,3 +65,11 @@ All visual attributes (color, border-radius, spacing, elevation/shadows, z-index
 * **Shimmer Animation Standard:** Apply a slow (~2s sweep) animated shimmer effect across a shared CSS class.
 * **Accessibility:** Respect `prefers-reduced-motion` by disabling shimmer animations.
 * **Static Fallbacks:** Only use static skeletons when handing off to a nested loading shell to prevent visual animation restarting glitches.
+
+---
+
+## 7. Structured Diagnostics & Server-Side Logging
+
+* **Server Log-Rich Design for AI Autonomy:** Emit comprehensive, structured server-side logs (`console.error`, `console.warn`, `console.info`) inside API routes, dispatcher handlers, and serverless functions. Include request parameters, validation details, database operation statuses, and full exception stack traces.
+* **Autonomous AI Debugging:** AI coding agents query server runtime logs directly via log tools (Vercel runtime logs, Supabase log queries) but cannot inspect client-side browser DevTools. Server-side logging empowers AI agents to debug and resolve errors independently without prompting the user to copy-paste browser logs.
+* **Informative API Error Payloads:** Never obscure API errors. Return structured diagnostic JSON responses (e.g., `{ error: "Presigned URL generation failed", details: error.message, route: "upload" }`) so network responses provide immediate, actionable context.
