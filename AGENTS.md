@@ -54,6 +54,10 @@ Before modifying code or designing features, consult the core documentation:
 * Never write comments explaining *what* code does - the code itself must be clear and self-describing.
 * Only add a comment if explaining non-obvious *why* rationale or external constraints.
 
+### Component Architecture (UI vs Domain)
+* **`src/components/ui/`:** Place domain-agnostic UI building blocks here. They must be controlled purely via generic props and never import business logic, app data models, or database schemas.
+* **`src/components/domain/`:** Place feature and business-aware components here. Feature components compose generic building blocks from `src/components/ui/`.
+
 ### Design Tokens & CSS
 * **NEVER hardcode raw visual values** (hex colors, pixel font sizes, arbitrary padding/margins).
 * All visual properties must reference design tokens from `src/styles/global/colors.css`, `tokens.css`, or `typography.css` via `var(--token)`.

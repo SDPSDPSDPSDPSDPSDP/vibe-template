@@ -4,13 +4,26 @@
 
 ---
 
-## 1. File Organization & Component Structure
+## 1. File Organization & Component Architecture
+
+### UI Primitives vs. Domain Components (`src/components/`)
+The `src/components/` directory is strictly divided into generic design system primitives and domain-aware feature components:
+
+1. **`src/components/ui/` - Generic UI Primitives (Design System)**
+   * **Domain-Agnostic:** Reusable building blocks (e.g. buttons, tooltips, dropdowns, modals, loaders, charts) that know nothing about app domain models, schemas, or business rules.
+   * **Prop-Driven & Portable:** Controlled purely via generic props (`isOpen`, `onClick`, `label`, `children`, `variant`). Portable across projects without modification.
+   * **Sub-folder Organization:** Categorized into sub-directories by UI role (`controls/`, `feedback/`, `overlay/`, `charts/`).
+
+2. **`src/components/domain/` - Application & Feature Components**
+   * **Domain-Aware:** Business-logic-aware components tied directly to app core concepts, data models, and backend schemas.
+   * **Composes UI Primitives:** Builds feature interfaces by composing generic building blocks from `src/components/ui/`.
+   * **Feature-Grouped:** Sub-folders map directly to feature areas of the application (e.g. `items/`, `forms/`, `stats/`, `media/`).
 
 ### Small Files & Component Splitting
 * **Prefer Small Files:** When a component or hook file grows long, split it. Pull sub-UI pieces into their own dedicated components.
 * **Extracting Hooks & Logic:** Pull state and business logic into `use*.ts` files under `src/lib/`:
-  * Domain-specific hooks: `src/lib/<domain>/` (e.g., `src/lib/session/useSession.ts`).
-  * Generic utility hooks: top-level `src/lib/` (e.g., `src/lib/useDismiss.ts`).
+  * Domain-specific hooks: `src/lib/<domain>/` (e.g. `src/lib/session/useSession.ts`).
+  * Generic utility hooks: top-level `src/lib/` (e.g. `src/lib/useDismiss.ts`).
 
 ### Component Folder Layout
 * **Co-Locate Parent and Children:** When a component is split into sub-pieces, give it its own kebab-case folder. Place the main parent component file *inside* the folder alongside its child components:
