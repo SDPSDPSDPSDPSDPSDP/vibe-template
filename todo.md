@@ -1,4 +1,3 @@
 - add to the AGENTS.md, if the user mentions other projects, you can find them on git, or locally: like:
     - C:\Users\shiri\Code\Gratitude\Gratitude & its github repo
     - C:\Users\shiri\Code\Closet & its github repo
-- add to the startup guide: once the startup is finsihed on your siede, explain to the user what they still have to do, like create the vercel project, set up the env variables in vercel; ...
