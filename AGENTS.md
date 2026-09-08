@@ -54,6 +54,11 @@ Before modifying code or designing features, consult the core documentation:
 * **NEVER hardcode raw visual values** (hex colors, pixel font sizes, arbitrary padding/margins).
 * All visual properties must reference design tokens from `src/styles/global/tokens.css` or `typography.css` via `var(--token)`.
 
+### Error Handling & Fallbacks
+* **NEVER implement silent fallbacks — always fail hard.** Swallowing exceptions or returning dummy fallback data (e.g. `[]` or `{}`) hides real database, permission, or code defects. Let errors throw explicitly. See [docs/CODING-STANDARDS.md#5-error-handling--fallbacks-policy](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/CODING-STANDARDS.md#5-error-handling--fallbacks-policy).
+* **Strict Environment Variables:** Never use inline fallback defaults for environment variables (e.g. `process.env.KEY || 'default'`). Environment variables must either be explicitly set or throw/fail hard immediately.
+* **Exception:** Only implement a fallback behavior when the user **explicitly asks** for it.
+
 ### Database Migrations & Schemas
 * **Apply schema changes ONLY via the Supabase MCP tool (`apply_migration`).** Never create hand-written SQL migration files in the repo.
 * **Verify with a real write operation after schema changes.** Reads may succeed on renamed columns or outdated `SECURITY DEFINER` RPCs while writes fail silently.

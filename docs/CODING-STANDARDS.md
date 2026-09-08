@@ -51,7 +51,15 @@ All visual attributes (color, border-radius, spacing, elevation/shadows, z-index
 
 ---
 
-## 5. UI Loading States
+## 5. Error Handling & Fallbacks Policy
+
+* **No Silent Fallbacks — Always Fail Hard:** Never swallow errors or return dummy fallback values (e.g. empty arrays `[]`, default objects, or silent 0-byte buffers) to mask underlying failures. If a query, function, or API call fails, allow it to fail hard so defects are immediately visible and debuggable.
+* **Strict Environment Variables (No Inline Fallbacks):** Never write inline fallback defaults for environment variables (e.g. `process.env.VAR || 'fallback'`). Environment variables must either be explicitly set in the environment or fail hard immediately if missing. Additional environments or variable branches will be configured explicitly when requested.
+* **User Request Exception:** Implement fallback logic **only** when the user explicitly requests a fallback for a specific feature or UI state.
+
+---
+
+## 6. UI Loading States
 
 * **Shimmer Skeletons over Spinners:** Use content-shaped skeleton placeholders rather than generic loading spinners.
 * **Shimmer Animation Standard:** Apply a slow (~2s sweep) animated shimmer effect across a shared CSS class.
