@@ -26,6 +26,7 @@ Projects are organized by **audience type** (one Supabase project per audience, 
 
 ### Migrations & RPC Operations
 * **Single Source of Truth:** Schema migrations are managed directly in the database via `supabase_migrations.schema_migrations`. Use the Supabase MCP `apply_migration` tool instead of local SQL migration files.
+* **Reference Schema Snapshot:** Any `supabase/schema.sql` file in the codebase serves strictly as a read-only reference snapshot for inspecting full schema structure or bootstrapping a new project instance. It is not used for applying migrations.
 * **Schema Write Verification:** Test a real DML write operation (`INSERT`/`UPDATE`) after schema edits. `SECURITY DEFINER` RPCs with explicit column references will continue serving reads but fail on writes after column renames.
 * **RPC Overloading Caution:** Parameter default values (`DEFAULT NULL`) cause Postgres function signature collisions (`42725: function is not unique`). Explicitly drop stale RPC overloads when modifying parameters.
 
