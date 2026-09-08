@@ -6,10 +6,10 @@
 
 ## 1. Repository Overview & Stack
 
-This project is built on the **Vibe Template** stack:
+This project is built on the **Vibe Template** stack architecture:
 * **Database & Auth:** Supabase (Postgres + Auth)
 * **File Storage:** Cloudflare R2 (Private bucket via presigned URLs)
-* **Hosting & API:** Vercel (Next.js serverless architecture)
+* **Hosting & API:** Vercel (Next.js serverless architecture) or Python backend services
 
 ---
 
@@ -31,7 +31,7 @@ Before modifying code or designing features, consult the core documentation:
 * **System Architecture:** [docs/ARCHITECTURE.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/ARCHITECTURE.md) - Infra design, R2 storage flow, RLS security patterns, and Vercel route dispatcher architecture.
 * **Coding Standards:** [docs/CODING-STANDARDS.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/CODING-STANDARDS.md) - CSS design tokens, folder structure, domain logic modules, and UI skeleton loading rules.
 * **Security Audit Playbook:** [docs/supabase-security-audit.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/supabase-security-audit.md) - Checklist and prompt template for auditing and hardening Supabase RLS.
-* **Bootstrap & Setup Guide:** [AI-startup-guide.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/AI-startup-guide.md) - Temporary onboarding checklist for scaffolding a new project.
+* **Bootstrap & Setup Guide:** [AI-startup-guide.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/AI-startup-guide.md) - Portable onboarding checklist and stack profile selection guide for scaffolding a new project.
 
 ---
 
@@ -39,11 +39,11 @@ Before modifying code or designing features, consult the core documentation:
 
 ### Emojis & Em Dashes
 * **NEVER use emojis or em dashes in code comments, markdown docs, or commit messages.**
-* Do not use any emojis or em dashes (`—`). Use plain hyphens (-) or standard text formatting instead.
+* Do not use any emojis or em dashes (`-`). Use plain hyphens (-) or standard text formatting instead.
 
 ### Builds & Dev Server
 * **NEVER run `next build` while `next dev` is running.** Running both simultaneously corrupts the `.next` directory.
-* Use `tsc --noEmit` to verify TypeScript types and compilation errors safely.
+* Use `tsc --noEmit` to verify TypeScript types and compilation errors safely. For Python components, use `mypy` or `ruff` for static verification.
 
 ### Browser & UI Testing
 * **Playwright and headless browser automation do NOT work in this environment.**
@@ -76,3 +76,9 @@ Before modifying code or designing features, consult the core documentation:
 * **Reference Schema Files:** If a `supabase/schema.sql` file exists in the repo, treat it strictly as a read-only reference snapshot (useful for inspecting table structure at a glance or bootstrapping a new project). Never use it to run migrations.
 * **Verify with a real write operation after schema changes.** Reads may succeed on renamed columns or outdated `SECURITY DEFINER` RPCs while writes fail silently.
 * **Avoid RPC Overload Footguns:** Avoid optional parameters (`DEFAULT NULL`) that create ambiguous function signatures in Postgres (`error 42725`).
+
+### External Projects & Repositories
+* **Locating Referenced Projects:** If the user mentions other projects, inspect local paths under `C:\Users\shiri\Code\` or search GitHub via tools.
+* **Known Projects:**
+  * `C:\Users\shiri\Code\Gratitude\Gratitude` and its GitHub repository `SDPSDPSDPSDPSDPSDP/gratitude` (`https://github.com/SDPSDPSDPSDPSDPSDP/gratitude`)
+  * `C:\Users\shiri\Code\Closet` and its GitHub repository `SDPSDPSDPSDPSDPSDP/closet` (`https://github.com/SDPSDPSDPSDPSDPSDP/closet`)

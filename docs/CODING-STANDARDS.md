@@ -20,7 +20,7 @@ src/
 │   └── domain/           # Pure business rules, calculation modules, domain hooks
 ├── styles/               # Design Tokens & Global CSS
 │   └── global/           # base.css, colors.css, fonts.css, tokens.css, typography.css
-└── middleware.ts         # Next.js Supabase session refresh middleware
+└── proxy.ts              # Next.js Supabase session refresh proxy
 ```
 
 ### UI Primitives vs. Domain Components (`src/components/`)
