@@ -25,6 +25,7 @@ Every new project starts from the core template baseline (icons, typography, doc
 Before starting code generation for a new app:
 
 1. **Select Supabase Project & Schema:**
+   * Ask the user whether they want the Supabase schema created in the public or private Supabase project.
    * **Single-User App:** Target the private Supabase project. Define a dedicated schema (e.g. `closet`, `gratitude`) and set up a single-user RLS helper function.
    * **Multi-User App:** Target the public Supabase project. Define a dedicated schema and design row-level RLS (`auth.uid() = user_id`).
 2. **Set Up Storage Bucket:**
@@ -45,7 +46,7 @@ Before starting code generation for a new app:
 8. **Verify Core Documentation & Assets:**
    * Ensure [AGENTS.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/AGENTS.md) is present in the repository root.
    * Ensure [docs/ARCHITECTURE.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/ARCHITECTURE.md) and [docs/CODING-STANDARDS.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/CODING-STANDARDS.md) are present.
-   * Ensure placeholder icons (`icon.png`, `apple-icon.png` in `src/app/`) and fonts are present in `public/fonts/`.
+   * Ensure placeholder SVG circle gradient icons (`icon.svg` in `src/app/`, `favicon.svg` in `public/`) and fonts are present in `public/fonts/`.
 
 ---
 
@@ -60,13 +61,15 @@ Before writing code:
 1. Read AGENTS.md in the root directory for operational rules.
 2. Read docs/ARCHITECTURE.md for infrastructure, R2 presigned URL patterns, and Supabase RLS requirements.
 3. Read docs/CODING-STANDARDS.md for CSS design token rules and domain module patterns.
-4. Update README.md with the actual project name and description.
-5. Update AGENTS.md under "Project Environment & Supabase Config" with the target Supabase Project Ref, Region, URL, and Schema Name.
-6. Create .env.local based on .env.example and populate the required Supabase and Cloudflare R2 credentials.
+4. Ask the user whether they want the Supabase schema created in the public or private Supabase project.
+5. Update README.md with the actual project name and description.
+6. Update AGENTS.md under "Project Environment & Supabase Config" with the target Supabase Project Ref, Region, URL, and Schema Name.
+7. Create .env.local based on .env.example and populate the required Supabase and Cloudflare R2 credentials.
 
 Target App Details:
 - App Name: <app-name>
 - Stack Profile: <nextjs | python | hybrid>
+- Supabase Project Target: <public | private> (ask user if not specified)
 - Audience Type: <single-user | multi-user>
 - Schema Name: <schema-name>
 - Primary Features: <feature-summary>
