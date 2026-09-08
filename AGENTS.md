@@ -28,14 +28,18 @@ This project is built on the **Vibe Template** stack:
 
 Before modifying code or designing features, consult the core documentation:
 
-* **System Architecture:** [docs/ARCHITECTURE.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/ARCHITECTURE.md) — Infra design, R2 storage flow, RLS security patterns, and Vercel route dispatcher architecture.
-* **Coding Standards:** [docs/CODING-STANDARDS.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/CODING-STANDARDS.md) — CSS design tokens, folder structure, domain logic modules, and UI skeleton loading rules.
-* **Security Audit Playbook:** [docs/supabase-security-audit.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/supabase-security-audit.md) — Checklist and prompt template for auditing and hardening Supabase RLS.
-* **Bootstrap & Setup Guide:** [AI-startup-guide.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/AI-startup-guide.md) — Temporary onboarding checklist for scaffolding a new project.
+* **System Architecture:** [docs/ARCHITECTURE.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/ARCHITECTURE.md) - Infra design, R2 storage flow, RLS security patterns, and Vercel route dispatcher architecture.
+* **Coding Standards:** [docs/CODING-STANDARDS.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/CODING-STANDARDS.md) - CSS design tokens, folder structure, domain logic modules, and UI skeleton loading rules.
+* **Security Audit Playbook:** [docs/supabase-security-audit.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/supabase-security-audit.md) - Checklist and prompt template for auditing and hardening Supabase RLS.
+* **Bootstrap & Setup Guide:** [AI-startup-guide.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/AI-startup-guide.md) - Temporary onboarding checklist for scaffolding a new project.
 
 ---
 
 ## 4. Hard Operational Rules (Never Violate)
+
+### Emojis & Em Dashes
+* **NEVER use emojis or em dashes in code comments, markdown docs, or commit messages.**
+* Do not use any emojis or em dashes (`—`). Use plain hyphens (-) or standard text formatting instead.
 
 ### Builds & Dev Server
 * **NEVER run `next build` while `next dev` is running.** Running both simultaneously corrupts the `.next` directory.
@@ -47,7 +51,7 @@ Before modifying code or designing features, consult the core documentation:
 
 ### Code Comments
 * **Keep comments to an absolute minimum.**
-* Never write comments explaining *what* code does — the code itself must be clear and self-describing.
+* Never write comments explaining *what* code does - the code itself must be clear and self-describing.
 * Only add a comment if explaining non-obvious *why* rationale or external constraints.
 
 ### Design Tokens & CSS
@@ -55,7 +59,7 @@ Before modifying code or designing features, consult the core documentation:
 * All visual properties must reference design tokens from `src/styles/global/tokens.css` or `typography.css` via `var(--token)`.
 
 ### Error Handling & Fallbacks
-* **NEVER implement silent fallbacks — always fail hard.** Swallowing exceptions or returning dummy fallback data (e.g. `[]` or `{}`) hides real database, permission, or code defects. Let errors throw explicitly. See [docs/CODING-STANDARDS.md#5-error-handling--fallbacks-policy](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/CODING-STANDARDS.md#5-error-handling--fallbacks-policy).
+* **NEVER implement silent fallbacks - always fail hard.** Swallowing exceptions or returning dummy fallback data (e.g. `[]` or `{}`) hides real database, permission, or code defects. Let errors throw explicitly. See [docs/CODING-STANDARDS.md#5-error-handling--fallbacks-policy](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/CODING-STANDARDS.md#5-error-handling--fallbacks-policy).
 * **Strict Environment Variables:** Never use inline fallback defaults for environment variables (e.g. `process.env.KEY || 'default'`). Environment variables must either be explicitly set or throw/fail hard immediately.
 * **Exception:** Only implement a fallback behavior when the user **explicitly asks** for it.
 

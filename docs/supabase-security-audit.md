@@ -15,7 +15,7 @@
 
 ## 2. Phase 1: Audit (Read-Only)
 
-> **Prompt for LLM:** Audit RLS setup on project `<project-ref>`, schema `<schema>`. Read-only mode — do **not** run DDL or migrations. Report findings and stop.
+> **Prompt for LLM:** Audit RLS setup on project `<project-ref>`, schema `<schema>`. Read-only mode - do **not** run DDL or migrations. Report findings and stop.
 
 1. **REST Exposure:** Verify exposed schemas in Dashboard → Project Settings → API.
 2. **Table RLS Status:** List all tables and check if RLS is enabled and forced.
@@ -130,7 +130,7 @@ Apply as a single database migration after reviewing Phase 1 output:
 | `200 OK` with rows | Data exposed via anon key | ❌ Vulnerable |
 
 ### Postgres Privilege Codes (ACL)
-* `arwd`: `a` (INSERT), `r` (SELECT), `w` (UPDATE), `d` (DELETE) — **Target DML Scope**
-* `Dxtm`: `D` (TRUNCATE), `x` (REFERENCES), `t` (TRIGGER), `m` (MAINTAIN) — **Avoid granting to app roles**
+* `arwd`: `a` (INSERT), `r` (SELECT), `w` (UPDATE), `d` (DELETE) - **Target DML Scope**
+* `Dxtm`: `D` (TRUNCATE), `x` (REFERENCES), `t` (TRIGGER), `m` (MAINTAIN) - **Avoid granting to app roles**
 * `UXC`: `U` (USAGE), `X` (EXECUTE), `C` (CREATE)
 * `=X/postgres`: ACL entry with an empty grantee indicates grant to **`PUBLIC`**.

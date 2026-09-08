@@ -24,7 +24,7 @@ All visual attributes (color, border-radius, spacing, elevation/shadows, z-index
 * Always consume token variables using `var(--token-name)`. If a required value is missing, add the token to `tokens.css` first.
 
 ### Role-Based Typography & CSS Composition
-* **Semantic, Role-Driven Naming:** Use semantic, business-logic-driven names for all typography utility classes — not abstract scale names like `.type-body-medium` or `.type-caption`. Names must reflect the actual UI role in the app domain (e.g. `.<app>-entry-text`, `.<app>-field-label`, `.<app>-section-heading`).
+* **Semantic, Role-Driven Naming:** Use semantic, business-logic-driven names for all typography utility classes - not abstract scale names like `.type-body-medium` or `.type-caption`. Names must reflect the actual UI role in the app domain (e.g. `.<app>-entry-text`, `.<app>-field-label`, `.<app>-section-heading`).
 * **The Guiding Question:** When adding a new text style, ask: *"What is this text FOR in the app?"* and name it accordingly.
 * **CSS Module Composition:** Import shared typography rules into component CSS using CSS module composition:
   ```css
@@ -53,7 +53,7 @@ All visual attributes (color, border-radius, spacing, elevation/shadows, z-index
 
 ## 5. Error Handling & Fallbacks Policy
 
-* **No Silent Fallbacks — Always Fail Hard:** Never swallow errors or return dummy fallback values (e.g. empty arrays `[]`, default objects, or silent 0-byte buffers) to mask underlying failures. If a query, function, or API call fails, allow it to fail hard so defects are immediately visible and debuggable.
+* **No Silent Fallbacks - Always Fail Hard:** Never swallow errors or return dummy fallback values (e.g. empty arrays `[]`, default objects, or silent 0-byte buffers) to mask underlying failures. If a query, function, or API call fails, allow it to fail hard so defects are immediately visible and debuggable.
 * **Strict Environment Variables (No Inline Fallbacks):** Never write inline fallback defaults for environment variables (e.g. `process.env.VAR || 'fallback'`). Environment variables must either be explicitly set in the environment or fail hard immediately if missing. Additional environments or variable branches will be configured explicitly when requested.
 * **User Request Exception:** Implement fallback logic **only** when the user explicitly requests a fallback for a specific feature or UI state.
 
