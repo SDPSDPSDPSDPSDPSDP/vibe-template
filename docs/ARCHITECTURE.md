@@ -47,6 +47,12 @@ The R2 bucket is private (no public domain or public bucket URLs). Access is man
 * **Thumbnails:** Generated client-side prior to upload and saved alongside the original payload.
 * **Image Rendering (`<img>` vs `next/image`):** Prefer standard HTML `<img>` tags for pre-thumbnailed R2 storage assets. `next/image` consumes transformation quotas and cannot follow 302 redirects to signed R2 URLs. Retain `next/image` only for bundled static assets.
 
+### Cloudflare Worker Edge CDN & Cron Dispatcher (`worker/`)
+The repository includes a Cloudflare Worker in `worker/`:
+* **Edge Media CDN:** Binds directly to the R2 bucket (`env.BUCKET`) to serve media at edge speed with `immutable` caching, bypassing Vercel compute bandwidth charges.
+* **Safari Video Scrubbing (HTTP Range Support):** Handles HTTP 206 `Range` requests required by iOS Safari for video streaming and scrubbing.
+* **Free Hourly Cron Triggers:** Executes free hourly cron triggers (`0 * * * *`) that call `/api/cron/` endpoints on the Vercel app, bypassing Vercel Hobby plan single-daily-cron limitations.
+
 ---
 
 ## 4. Security & Row Level Security (RLS)

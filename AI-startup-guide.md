@@ -15,16 +15,19 @@ Before starting code generation for a new app:
 2. **Set Up Storage Bucket:**
    * Create a private Cloudflare R2 bucket.
    * Configure R2 CORS policy to allow `Access-Control-Allow-Origin` for canvas pixel sampling.
-3. **Configure Vercel Deployment Region:**
+3. **Configure Cloudflare Worker (Optional/Recommended):**
+   * Update `worker/wrangler.toml` with `<app-name>-media`, `<r2-bucket-name>`, and `APP_ORIGIN`.
+   * Deploy via `npx wrangler deploy` if using edge media streaming or hourly cron triggers.
+4. **Configure Vercel Deployment Region:**
    * Pin function region in `vercel.json` (`"regions": ["dub1"]`) to match Supabase's region (`eu-west-1`).
-   * Confirm in Vercel Dashboard (*Project Settings → Functions → Function Region*). Note that region updates require a new deployment to take effect.
-4. **Update Project README.md:**
+   * Confirm in Vercel Dashboard (*Project Settings -> Functions -> Function Region*). Note that region updates require a new deployment to take effect.
+5. **Update Project README.md:**
    * Fill in [README.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/README.md) with the new project's actual name, description, and overview.
-5. **Configure AGENTS.md Environment Details:**
+6. **Configure AGENTS.md Environment Details:**
    * Fill in [AGENTS.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/AGENTS.md) under `## 2. Project Environment & Supabase Config` with the target Supabase Project Ref, Region, URL, and Schema Name.
-6. **Configure Environment Variables (`.env.local`):**
+7. **Configure Environment Variables (`.env.local`):**
    * Copy [.env.example](file:///c:/Users/shiri/Code/Common/Vibe%20Template/.env.example) to `.env.local` and populate all required Supabase and Cloudflare R2 keys (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`).
-7. **Verify Core Documentation:**
+8. **Verify Core Documentation:**
    * Ensure [AGENTS.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/AGENTS.md) is present in the repository root.
    * Ensure [docs/ARCHITECTURE.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/ARCHITECTURE.md) and [docs/CODING-STANDARDS.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/CODING-STANDARDS.md) are present.
 
