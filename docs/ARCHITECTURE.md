@@ -60,6 +60,7 @@ The R2 bucket is private (no public domain or public bucket URLs). Access is man
   * Revoke function privileges from `PUBLIC` as well as `anon`.
   * Reverse `ALTER DEFAULT PRIVILEGES` for `anon` on new schemas.
   * Add in-body `auth.uid()` checks inside `SECURITY DEFINER` RPCs.
+* **Security Audit & Lockdown:** For step-by-step instructions and prompt templates for auditing RLS, grants, and storage bucket policies, follow [docs/supabase-security-audit.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/supabase-security-audit.md).
 
 ---
 

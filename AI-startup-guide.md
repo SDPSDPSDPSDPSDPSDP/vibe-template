@@ -47,5 +47,5 @@ Proceed to generate initial schema DDL, API route dispatcher setups, and compone
 ## 3. Off-Ramp / Post-Launch Cleanup
 
 Once the application is scaffolded, verified, and deployed:
-* **Delete `docs/AI-startup-guide.md`** to keep the repository documentation clean.
+* **Delete `AI-startup-guide.md`** from the root directory to keep the repository clean.
 * Retain `AGENTS.md`, `docs/ARCHITECTURE.md`, and `docs/CODING-STANDARDS.md` as living documentation.
