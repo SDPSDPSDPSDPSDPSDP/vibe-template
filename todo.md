@@ -2,5 +2,4 @@
     - C:\Users\shiri\Code\Gratitude\Gratitude & its github repo
     - C:\Users\shiri\Code\Closet & its github repo
 - add to the startup guide: ask the user whether they want the supabase shcema in the public or private project, when setting up the ai startup guide
-- icon
-- once the startup is finsihed on your siede, explain to the user what they still have to do, like create the vercel project, set up the env variables in vercel; ...
+- add to the startup guide: once the startup is finsihed on your siede, explain to the user what they still have to do, like create the vercel project, set up the env variables in vercel; ...
