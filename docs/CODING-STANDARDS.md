@@ -6,9 +6,22 @@
 
 ## 1. File Organization & Component Structure
 
-* **Folder Nesting over Code Nesting:** Prefer small, single-responsibility files nested in clear folder hierarchies rather than large, monolithic files.
-  * *Example:* `components/ui/feedback/Skeleton/Skeleton.tsx` with a co-located `Skeleton.module.css`.
-* **Flat File Internals:** Keep logic inside each individual component or module flat and simple.
+### Small Files & Component Splitting
+* **Prefer Small Files:** When a component or hook file grows long, split it. Pull sub-UI pieces into their own dedicated components.
+* **Extracting Hooks & Logic:** Pull state and business logic into `use*.ts` files under `src/lib/`:
+  * Domain-specific hooks: `src/lib/<domain>/` (e.g., `src/lib/session/useSession.ts`).
+  * Generic utility hooks: top-level `src/lib/` (e.g., `src/lib/useDismiss.ts`).
+
+### Component Folder Layout
+* **Co-Locate Parent and Children:** When a component is split into sub-pieces, give it its own kebab-case folder. Place the main parent component file *inside* the folder alongside its child components:
+  ```
+  control-panel/
+    ControlPanel.tsx
+    CornerControls.tsx
+    ErrorBanner.tsx
+    ControlPanel.module.css
+  ```
+* **Anti-Pattern:** Never leave a parent `ControlPanel.tsx` file sitting outside next to a separate `control-panel/` folder. Apply this layout whenever splitting components.
 
 ---
 
