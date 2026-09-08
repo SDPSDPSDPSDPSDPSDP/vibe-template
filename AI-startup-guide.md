@@ -15,7 +15,10 @@ Before starting code generation for a new app:
 2. **Set Up Storage Bucket:**
    * Create a private Cloudflare R2 bucket.
    * Configure R2 CORS policy to allow `Access-Control-Allow-Origin` for canvas pixel sampling.
-3. **Verify Core Documentation:**
+3. **Configure Vercel Deployment Region:**
+   * Pin function region in `vercel.json` (`"regions": ["dub1"]`) to match Supabase's region (`eu-west-1`).
+   * Confirm in Vercel Dashboard (*Project Settings → Functions → Function Region*). Note that region updates require a new deployment to take effect.
+4. **Verify Core Documentation:**
    * Ensure [AGENTS.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/AGENTS.md) is present in the repository root.
    * Ensure [docs/ARCHITECTURE.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/ARCHITECTURE.md) and [docs/CODING-STANDARDS.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/CODING-STANDARDS.md) are present.
 

@@ -66,5 +66,6 @@ The R2 bucket is private (no public domain or public bucket URLs). Access is man
 
 ## 5. Deployment & Vercel Function Dispatcher
 
-* **Hobby Plan Function Limit:** Vercel Hobby accounts limit deployments to **12 Serverless Functions**.
+* **Region Co-Location (`dub1` / `eu-west-1`):** Vercel functions are pinned to Dublin (`dub1`) in `vercel.json` to match Supabase (`eu-west-1`). Sequential DB round-trips from default US regions (`iad1`) introduce transatlantic latency hops (causing multi-second delays on page loads). Functions must stay co-located with the Supabase region.
+* **Hobby Plan Function Limit:** Vercel Hobby accounts limit deployments to **12 Serverless Functions**. The Hobby plan allows one region, configured via `"regions": ["dub1"]` in `vercel.json` (Dashboard settings in *Project Settings → Functions → Function Region* follow this file).
 * **Dispatcher Pattern:** Consolidate small internal API endpoints into a single dispatcher function (`/api/editor.js`) mapping request parameters to internal handler modules. Use `vercel.json` rewrites (e.g., `/api/birds` -> `/api/editor?route=birds`) to preserve clean client URLs.
