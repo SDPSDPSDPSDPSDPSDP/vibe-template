@@ -5,7 +5,22 @@
 
 ---
 
-## 1. Pre-Flight Bootstrap Checklist
+## 1. Stack Profile Selection
+
+Every new project starts from the core template baseline (icons, typography, docs, AGENTS.md, Supabase schema setup, and .gitignore). Select the project profile during bootstrapping:
+
+* **Next.js / TypeScript Stack (Default Web App):**
+  * Retain `src/`, `package.json`, `tsconfig.json`, `next.config.mjs`, `.eslintrc.json`, `next-env.d.ts`, and `worker/`.
+* **Python Stack (Data Science / ML / Backend Service):**
+  * Initialize Python config (`pyproject.toml` or `requirements.txt`).
+  * Remove JS/TS frontend configs (`package.json`, `next.config.mjs`, `tsconfig.json`, `.eslintrc.json`, `worker/`) if no Node frontend is required.
+  * Retain `AGENTS.md`, `docs/`, `public/` (icons & assets), `supabase/`, `.gitignore` (pre-configured for Python), `.env.example`.
+* **Hybrid Stack (Next.js Frontend + Python Backend):**
+  * Retain Next.js files in `src/` and place Python code in `api/` or `backend/`.
+
+---
+
+## 2. Pre-Flight Bootstrap Checklist
 
 Before starting code generation for a new app:
 
@@ -15,7 +30,7 @@ Before starting code generation for a new app:
 2. **Set Up Storage Bucket:**
    * Create a private Cloudflare R2 bucket.
    * Configure R2 CORS policy to allow `Access-Control-Allow-Origin` for canvas pixel sampling.
-3. **Configure Cloudflare Worker (Optional/Recommended):**
+3. **Configure Cloudflare Worker (Optional/Recommended for Node stack):**
    * Update `worker/wrangler.toml` with `<app-name>-media`, `<r2-bucket-name>`, and `APP_ORIGIN`.
    * Deploy via `npx wrangler deploy` if using edge media streaming or hourly cron triggers.
 4. **Configure Vercel Deployment Region:**
@@ -27,13 +42,14 @@ Before starting code generation for a new app:
    * Fill in [AGENTS.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/AGENTS.md) under `## 2. Project Environment & Supabase Config` with the target Supabase Project Ref, Region, URL, and Schema Name.
 7. **Configure Environment Variables (`.env.local`):**
    * Copy [.env.example](file:///c:/Users/shiri/Code/Common/Vibe%20Template/.env.example) to `.env.local` and populate all required Supabase and Cloudflare R2 keys (`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET_NAME`).
-8. **Verify Core Documentation:**
+8. **Verify Core Documentation & Assets:**
    * Ensure [AGENTS.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/AGENTS.md) is present in the repository root.
    * Ensure [docs/ARCHITECTURE.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/ARCHITECTURE.md) and [docs/CODING-STANDARDS.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/CODING-STANDARDS.md) are present.
+   * Ensure placeholder icons (`icon.png`, `apple-icon.png` in `src/app/`) and fonts are present in `public/fonts/`.
 
 ---
 
-## 2. Scaffolding Prompt for LLM
+## 3. Scaffolding Prompt for LLM
 
 When starting a new project in this repository, hand the following prompt to the AI agent:
 
@@ -50,16 +66,21 @@ Before writing code:
 
 Target App Details:
 - App Name: <app-name>
+- Stack Profile: <nextjs | python | hybrid>
 - Audience Type: <single-user | multi-user>
 - Schema Name: <schema-name>
 - Primary Features: <feature-summary>
 
-Proceed to generate initial schema DDL, API route dispatcher setups, and component shells adhering strictly to these docs.
+If Stack Profile is Python:
+- Remove unneeded Node frontend config files (package.json, next.config.mjs, tsconfig.json, worker/) unless a Next.js frontend is used.
+- Initialize pyproject.toml / requirements.txt and Python package structure.
+
+Proceed to generate initial schema DDL, API route dispatcher / backend setups, and component shells adhering strictly to these docs.
 ```
 
 ---
 
-## 3. Off-Ramp / Post-Launch Cleanup
+## 4. Off-Ramp / Post-Launch Cleanup
 
 Once the application is scaffolded, verified, and deployed:
 * **Delete `AI-startup-guide.md`** from the root directory to keep the repository clean.
