@@ -58,7 +58,7 @@ The repository includes a Cloudflare Worker in `worker/`:
 
 ## 4. Security & Row Level Security (RLS)
 
-* **Database Gate vs. App Gate:** The Supabase publishable `anon` key is public by design. Application middleware (e.g. `src/proxy.ts`) protects pages, but RLS is the **only** gate protecting REST endpoints.
+* **Database Gate vs. App Gate:** The Supabase publishable `anon` key is public by design. Application middleware (e.g. `src/middleware.ts`) protects pages, but RLS is the **only** gate protecting REST endpoints.
 * **Authentication:** Standardize on Google OAuth (`auth.uid()`).
 * **Fix Patterns:**
   * **Pattern A (Per-User Ownership):** `auth.uid() = user_id` for multi-user schemas.

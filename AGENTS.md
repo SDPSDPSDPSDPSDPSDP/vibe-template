@@ -54,9 +54,14 @@ Before modifying code or designing features, consult the core documentation:
 * Never write comments explaining *what* code does - the code itself must be clear and self-describing.
 * Only add a comment if explaining non-obvious *why* rationale or external constraints.
 
+### Component Architecture (UI vs Domain)
+* **`src/components/ui/`:** Place domain-agnostic UI building blocks here. They must be controlled purely via generic props and never import business logic, app data models, or database schemas.
+* **`src/components/domain/`:** Place feature and business-aware components here. Feature components compose generic building blocks from `src/components/ui/`.
+
 ### Design Tokens & CSS
 * **NEVER hardcode raw visual values** (hex colors, pixel font sizes, arbitrary padding/margins).
-* All visual properties must reference design tokens from `src/styles/global/tokens.css` or `typography.css` via `var(--token)`.
+* All visual properties must reference design tokens from `src/styles/global/colors.css`, `tokens.css`, or `typography.css` via `var(--token)`.
+* **No Hardcoded Grey Text:** Text colors must never use solid hex greys - always use alpha transparent white or black tokens (e.g. `rgba(255, 255, 255, 0.96)`, `rgba(255, 255, 255, 0.5)`) for proper blending on dynamic surfaces.
 
 ### Error Handling & Fallbacks
 * **NEVER implement silent fallbacks - always fail hard.** Swallowing exceptions or returning dummy fallback data (e.g. `[]` or `{}`) hides real database, permission, or code defects. Let errors throw explicitly. See [docs/CODING-STANDARDS.md#5-error-handling--fallbacks-policy](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/CODING-STANDARDS.md#5-error-handling--fallbacks-policy).

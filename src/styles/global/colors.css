@@ -1,0 +1,23 @@
+:root {
+  /* Surface & Background Colors */
+  --color-surface-page: #121212;
+  --color-surface-raised: #181818;
+  --color-surface-card: rgba(255, 255, 255, 0.05);
+  --color-surface-overlay: #000000;
+
+  /* Text Colors (Alpha transparent white/black for proper surface blending) */
+  --color-text-primary: rgba(255, 255, 255, 0.96);
+  --color-text-secondary: rgba(255, 255, 255, 0.72);
+  --color-text-muted: rgba(255, 255, 255, 0.5);
+
+  /* Border Colors */
+  --color-border-subtle: rgba(255, 255, 255, 0.1);
+
+  /* Skeleton Loading Tokens */
+  --color-skeleton-base: rgba(255, 255, 255, 0.08);
+  --color-skeleton-sheen: rgba(255, 255, 255, 0.18);
+
+  /* Status Colors */
+  --color-status-active: #4ade80;
+  --color-status-error: #ef4444;
+}

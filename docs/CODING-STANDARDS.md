@@ -4,13 +4,43 @@
 
 ---
 
-## 1. File Organization & Component Structure
+## 1. File Organization & Component Architecture
+
+### Standard `src/` Directory Layout
+All applications built with this template adhere to the following unified directory structure:
+
+```
+src/
+├── app/                  # Next.js App Router (pages, layouts, API endpoints)
+├── components/           # UI Component Tree
+│   ├── ui/               # Generic, domain-agnostic UI primitives (controls, feedback, overlay)
+│   └── domain/           # Feature components composing UI primitives
+├── lib/                  # Application Logic & Utilities
+│   ├── data/             # Supabase clients, API fetchers, database integration
+│   └── domain/           # Pure business rules, calculation modules, domain hooks
+├── styles/               # Design Tokens & Global CSS
+│   └── global/           # base.css, colors.css, fonts.css, tokens.css, typography.css
+└── middleware.ts         # Next.js Supabase session refresh middleware
+```
+
+### UI Primitives vs. Domain Components (`src/components/`)
+The `src/components/` directory is strictly divided into generic design system primitives and domain-aware feature components:
+
+1. **`src/components/ui/` - Generic UI Primitives (Design System)**
+   * **Domain-Agnostic:** Reusable building blocks (e.g. buttons, tooltips, dropdowns, modals, loaders, charts) that know nothing about app domain models, schemas, or business rules.
+   * **Prop-Driven & Portable:** Controlled purely via generic props (`isOpen`, `onClick`, `label`, `children`, `variant`). Portable across projects without modification.
+   * **Sub-folder Organization:** Categorized into sub-directories by UI role (`controls/`, `feedback/`, `overlay/`, `charts/`).
+
+2. **`src/components/domain/` - Application & Feature Components**
+   * **Domain-Aware:** Business-logic-aware components tied directly to app core concepts, data models, and backend schemas.
+   * **Composes UI Primitives:** Builds feature interfaces by composing generic building blocks from `src/components/ui/`.
+   * **Feature-Grouped:** Sub-folders map directly to feature areas of the application (e.g. `items/`, `forms/`, `stats/`, `media/`).
 
 ### Small Files & Component Splitting
 * **Prefer Small Files:** When a component or hook file grows long, split it. Pull sub-UI pieces into their own dedicated components.
 * **Extracting Hooks & Logic:** Pull state and business logic into `use*.ts` files under `src/lib/`:
-  * Domain-specific hooks: `src/lib/<domain>/` (e.g., `src/lib/session/useSession.ts`).
-  * Generic utility hooks: top-level `src/lib/` (e.g., `src/lib/useDismiss.ts`).
+  * Domain-specific hooks: `src/lib/<domain>/` (e.g. `src/lib/session/useSession.ts`).
+  * Generic utility hooks: top-level `src/lib/` (e.g. `src/lib/useDismiss.ts`).
 
 ### Component Folder Layout
 * **Co-Locate Parent and Children:** When a component is split into sub-pieces, give it its own kebab-case folder. Place the main parent component file *inside* the folder alongside its child components:
@@ -29,12 +59,18 @@
 
 ### Single Source of Truth
 All visual attributes (color, border-radius, spacing, elevation/shadows, z-index) must be defined in central token files:
+* `src/styles/global/colors.css`
 * `src/styles/global/tokens.css`
 * `src/styles/global/typography.css`
+* `src/styles/global/fonts.css`
 
 ### Strict Token Rule
 * **Never hardcode raw visual values** (e.g. `#1a1a1a`, `16px`, `12px 24px`) in component styles or inline code.
-* Always consume token variables using `var(--token-name)`. If a required value is missing, add the token to `tokens.css` first.
+* Always consume token variables using `var(--token-name)`. If a required value is missing, add the token to `colors.css` or `tokens.css` first.
+
+### Text Color Opacity Rule
+* **No Hardcoded Greys for Text:** Never use solid hex grey values (e.g. `#a3a3a3`, `#888888`, `#666666`) for text colors.
+* **Transparent White / Black:** Text colors must always be defined using alpha transparency (e.g. `rgba(255, 255, 255, 0.96)` or `rgba(255, 255, 255, 0.5)` in dark theme; `rgba(0, 0, 0, 0.9)` or `rgba(0, 0, 0, 0.6)` in light theme). This ensures text blends dynamically across varying card surfaces, overlays, and background textures.
 
 ### Role-Based Typography & CSS Composition
 * **Semantic, Role-Driven Naming:** Use semantic, business-logic-driven names for all typography utility classes - not abstract scale names like `.type-body-medium` or `.type-caption`. Names must reflect the actual UI role in the app domain (e.g. `.<app>-entry-text`, `.<app>-field-label`, `.<app>-section-heading`).
