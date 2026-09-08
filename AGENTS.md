@@ -13,7 +13,18 @@ This project is built on the **Vibe Template** stack:
 
 ---
 
-## 2. Documentation Sitemap
+## 2. Project Environment & Supabase Config
+
+* **Supabase Project Ref:** `<project-ref>`
+* **Region:** `<region>` (e.g., `eu-west-1`)
+* **Supabase URL:** `https://<project-ref>.supabase.co`
+* **Target Schema:** `<schema-name>` (all app tables live under this schema, not `public`)
+
+> **Tooling Note:** Use the Supabase MCP tool for all database changes (schema migrations via `apply_migration`, inspecting types, running SQL queries).
+
+---
+
+## 3. Documentation Sitemap
 
 Before modifying code or designing features, consult the core documentation:
 
@@ -24,7 +35,7 @@ Before modifying code or designing features, consult the core documentation:
 
 ---
 
-## 3. Hard Operational Rules (Never Violate)
+## 4. Hard Operational Rules (Never Violate)
 
 ### Builds & Dev Server
 * **NEVER run `next build` while `next dev` is running.** Running both simultaneously corrupts the `.next` directory.

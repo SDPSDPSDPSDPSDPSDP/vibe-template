@@ -20,7 +20,9 @@ Before starting code generation for a new app:
    * Confirm in Vercel Dashboard (*Project Settings → Functions → Function Region*). Note that region updates require a new deployment to take effect.
 4. **Update Project README.md:**
    * Fill in [README.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/README.md) with the new project's actual name, description, and overview.
-5. **Verify Core Documentation:**
+5. **Configure AGENTS.md Environment Details:**
+   * Fill in [AGENTS.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/AGENTS.md) under `## 2. Project Environment & Supabase Config` with the target Supabase Project Ref, Region, URL, and Schema Name.
+6. **Verify Core Documentation:**
    * Ensure [AGENTS.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/AGENTS.md) is present in the repository root.
    * Ensure [docs/ARCHITECTURE.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/ARCHITECTURE.md) and [docs/CODING-STANDARDS.md](file:///c:/Users/shiri/Code/Common/Vibe%20Template/docs/CODING-STANDARDS.md) are present.
 
@@ -38,6 +40,7 @@ Before writing code:
 2. Read docs/ARCHITECTURE.md for infrastructure, R2 presigned URL patterns, and Supabase RLS requirements.
 3. Read docs/CODING-STANDARDS.md for CSS design token rules and domain module patterns.
 4. Update README.md with the actual project name and description.
+5. Update AGENTS.md under "Project Environment & Supabase Config" with the target Supabase Project Ref, Region, URL, and Schema Name.
 
 Target App Details:
 - App Name: <app-name>
