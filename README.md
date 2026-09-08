@@ -1,6 +1,6 @@
-# [Project Name]
+# <App Name>
 
-[A brief description of your application.]
+> A brief description of your application.
 
 ## Getting Started
 
