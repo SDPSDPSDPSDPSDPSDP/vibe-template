@@ -76,3 +76,9 @@ Before modifying code or designing features, consult the core documentation:
 * **Reference Schema Files:** If a `supabase/schema.sql` file exists in the repo, treat it strictly as a read-only reference snapshot (useful for inspecting table structure at a glance or bootstrapping a new project). Never use it to run migrations.
 * **Verify with a real write operation after schema changes.** Reads may succeed on renamed columns or outdated `SECURITY DEFINER` RPCs while writes fail silently.
 * **Avoid RPC Overload Footguns:** Avoid optional parameters (`DEFAULT NULL`) that create ambiguous function signatures in Postgres (`error 42725`).
+
+### External Projects & Repositories
+* **Locating Referenced Projects:** If the user mentions other projects, inspect local paths under `C:\Users\shiri\Code\` or search GitHub via tools.
+* **Known Projects:**
+  * `C:\Users\shiri\Code\Gratitude\Gratitude` and its GitHub repository `SDPSDPSDPSDPSDPSDP/gratitude` (`https://github.com/SDPSDPSDPSDPSDPSDP/gratitude`)
+  * `C:\Users\shiri\Code\Closet` and its GitHub repository `SDPSDPSDPSDPSDPSDP/closet` (`https://github.com/SDPSDPSDPSDPSDPSDP/closet`)
