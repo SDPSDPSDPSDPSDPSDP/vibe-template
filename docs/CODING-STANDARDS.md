@@ -29,12 +29,17 @@
 
 ### Single Source of Truth
 All visual attributes (color, border-radius, spacing, elevation/shadows, z-index) must be defined in central token files:
+* `src/styles/global/colors.css`
 * `src/styles/global/tokens.css`
 * `src/styles/global/typography.css`
 
 ### Strict Token Rule
 * **Never hardcode raw visual values** (e.g. `#1a1a1a`, `16px`, `12px 24px`) in component styles or inline code.
-* Always consume token variables using `var(--token-name)`. If a required value is missing, add the token to `tokens.css` first.
+* Always consume token variables using `var(--token-name)`. If a required value is missing, add the token to `colors.css` or `tokens.css` first.
+
+### Text Color Opacity Rule
+* **No Hardcoded Greys for Text:** Never use solid hex grey values (e.g. `#a3a3a3`, `#888888`, `#666666`) for text colors.
+* **Transparent White / Black:** Text colors must always be defined using alpha transparency (e.g. `rgba(255, 255, 255, 0.96)` or `rgba(255, 255, 255, 0.5)` in dark theme; `rgba(0, 0, 0, 0.9)` or `rgba(0, 0, 0, 0.6)` in light theme). This ensures text blends dynamically across varying card surfaces, overlays, and background textures.
 
 ### Role-Based Typography & CSS Composition
 * **Semantic, Role-Driven Naming:** Use semantic, business-logic-driven names for all typography utility classes - not abstract scale names like `.type-body-medium` or `.type-caption`. Names must reflect the actual UI role in the app domain (e.g. `.<app>-entry-text`, `.<app>-field-label`, `.<app>-section-heading`).
