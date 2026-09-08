@@ -6,6 +6,23 @@
 
 ## 1. File Organization & Component Architecture
 
+### Standard `src/` Directory Layout
+All applications built with this template adhere to the following unified directory structure:
+
+```
+src/
+├── app/                  # Next.js App Router (pages, layouts, API endpoints)
+├── components/           # UI Component Tree
+│   ├── ui/               # Generic, domain-agnostic UI primitives (controls, feedback, overlay)
+│   └── domain/           # Feature components composing UI primitives
+├── lib/                  # Application Logic & Utilities
+│   ├── data/             # Supabase clients, API fetchers, database integration
+│   └── domain/           # Pure business rules, calculation modules, domain hooks
+├── styles/               # Design Tokens & Global CSS
+│   └── global/           # base.css, colors.css, fonts.css, tokens.css, typography.css
+└── middleware.ts         # Next.js Supabase session refresh middleware
+```
+
 ### UI Primitives vs. Domain Components (`src/components/`)
 The `src/components/` directory is strictly divided into generic design system primitives and domain-aware feature components:
 
