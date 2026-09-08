@@ -24,11 +24,12 @@ All visual attributes (color, border-radius, spacing, elevation/shadows, z-index
 * Always consume token variables using `var(--token-name)`. If a required value is missing, add the token to `tokens.css` first.
 
 ### Role-Based Typography & CSS Composition
-* **Name for Role, Not Scale:** Name typography utility classes based on UI role (`.closet-item-card-name`) rather than abstract size (`.type-body-medium`).
+* **Semantic, Role-Driven Naming:** Use semantic, business-logic-driven names for all typography utility classes — not abstract scale names like `.type-body-medium` or `.type-caption`. Names must reflect the actual UI role in the app domain (e.g. `.<app>-entry-text`, `.<app>-field-label`, `.<app>-section-heading`).
+* **The Guiding Question:** When adding a new text style, ask: *"What is this text FOR in the app?"* and name it accordingly.
 * **CSS Module Composition:** Import shared typography rules into component CSS using CSS module composition:
   ```css
   .itemName {
-    composes: closet-item-card-name from global;
+    composes: <app>-item-card-name from global;
     color: var(--color-text-primary);
   }
   ```
