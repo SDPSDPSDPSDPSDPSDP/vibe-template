@@ -35,7 +35,13 @@ Before modifying code or designing features, consult the core documentation:
 
 ---
 
-## 4. Hard Operational Rules (Never Violate)
+## 4. Coding Philosophy
+
+* Apply the `ponytail:ponytail` skill (YAGNI-first, minimal-diff coding) to all code changes in this repo.
+
+---
+
+## 5. Hard Operational Rules (Never Violate)
 
 ### Emojis & Em Dashes
 * **NEVER use emojis or em dashes in code comments, markdown docs, or commit messages.**
