@@ -1,124 +1,63 @@
 # Coding Standards & Conventions
 
-> Code structure, CSS design token system, domain logic patterns, and UI standards.
+Essential code structure, design tokens, domain logic, and UI conventions.
 
 ---
 
-## 1. File Organization & Component Architecture
+## 1. Component Architecture & Organization
 
-### Standard `src/` Directory Layout
-All applications built with this template adhere to the following unified directory structure:
-
-```
-src/
-├── app/                  # Next.js App Router (pages, layouts, API endpoints)
-├── components/           # UI Component Tree
-│   ├── ui/               # Generic, domain-agnostic UI primitives (controls, feedback, overlay)
-│   └── domain/           # Feature components composing UI primitives
-├── lib/                  # Application Logic & Utilities
-│   ├── data/             # Supabase clients, API fetchers, database integration
-│   └── domain/           # Pure business rules, calculation modules, domain hooks
-├── styles/               # Design Tokens & Global CSS
-│   └── global/           # base.css, colors.css, fonts.css, tokens.css, typography.css
-└── proxy.ts              # Next.js Supabase session refresh proxy
-```
-
-### UI Primitives vs. Domain Components (`src/components/`)
-The `src/components/` directory is strictly divided into generic design system primitives and domain-aware feature components:
-
-1. **`src/components/ui/` - Generic UI Primitives (Design System)**
-   * **Domain-Agnostic:** Reusable building blocks (e.g. buttons, tooltips, dropdowns, modals, loaders, charts) that know nothing about app domain models, schemas, or business rules.
-   * **Prop-Driven & Portable:** Controlled purely via generic props (`isOpen`, `onClick`, `label`, `children`, `variant`). Portable across projects without modification.
-   * **Sub-folder Organization:** Categorized into sub-directories by UI role (`controls/`, `feedback/`, `overlay/`, `charts/`).
-
-2. **`src/components/domain/` - Application & Feature Components**
-   * **Domain-Aware:** Business-logic-aware components tied directly to app core concepts, data models, and backend schemas.
-   * **Composes UI Primitives:** Builds feature interfaces by composing generic building blocks from `src/components/ui/`.
-   * **Feature-Grouped:** Sub-folders map directly to feature areas of the application (e.g. `items/`, `forms/`, `stats/`, `media/`).
-
-### Small Files & Component Splitting
-* **Prefer Small Files:** When a component or hook file grows long, split it. Pull sub-UI pieces into their own dedicated components.
-* **Extracting Hooks & Logic:** Pull state and business logic into `use*.ts` files under `src/lib/`:
-  * Domain-specific hooks: `src/lib/<domain>/` (e.g. `src/lib/session/useSession.ts`).
-  * Generic utility hooks: top-level `src/lib/` (e.g. `src/lib/useDismiss.ts`).
-
-### Component Folder Layout
-* **Co-Locate Parent and Children:** When a component is split into sub-pieces, give it its own kebab-case folder. Place the main parent component file *inside* the folder alongside its child components:
+* **`src/components/ui/`:** Domain-agnostic primitives (buttons, modals, tooltips). Controlled purely via generic props. Never import domain models or database schemas.
+* **`src/components/domain/`:** Feature components aware of app models and business logic. Compose generic primitives from `src/components/ui/`.
+* **Component Splitting & Co-location:** When a component grows, split sub-components into a kebab-case folder containing the parent, children, and style module together:
   ```
   control-panel/
     ControlPanel.tsx
     CornerControls.tsx
-    ErrorBanner.tsx
     ControlPanel.module.css
   ```
-* **Anti-Pattern:** Never leave a parent `ControlPanel.tsx` file sitting outside next to a separate `control-panel/` folder. Apply this layout whenever splitting components.
+* **Extract Hooks:** Put reusable business state into `src/lib/domain/use*.ts` and generic utility hooks into `src/lib/use*.ts`.
 
 ---
 
 ## 2. CSS Design Tokens & Typography
 
-### Single Source of Truth
-All visual attributes (color, border-radius, spacing, elevation/shadows, z-index) must be defined in central token files:
-* `src/styles/global/colors.css`
-* `src/styles/global/tokens.css`
-* `src/styles/global/typography.css`
-* `src/styles/global/fonts.css`
-
-### Strict Token Rule
-* **Never hardcode raw visual values** (e.g. `#1a1a1a`, `16px`, `12px 24px`) in component styles or inline code.
-* Always consume token variables using `var(--token-name)`. If a required value is missing, add the token to `colors.css` or `tokens.css` first.
-
-### Text Color Opacity Rule
-* **No Hardcoded Greys for Text:** Never use solid hex grey values (e.g. `#a3a3a3`, `#888888`, `#666666`) for text colors.
-* **Transparent White / Black:** Text colors must always be defined using alpha transparency (e.g. `rgba(255, 255, 255, 0.96)` or `rgba(255, 255, 255, 0.5)` in dark theme; `rgba(0, 0, 0, 0.9)` or `rgba(0, 0, 0, 0.6)` in light theme). This ensures text blends dynamically across varying card surfaces, overlays, and background textures.
-
-### Role-Based Typography & CSS Composition
-* **Semantic, Role-Driven Naming:** Use semantic, business-logic-driven names for all typography utility classes - not abstract scale names like `.type-body-medium` or `.type-caption`. Names must reflect the actual UI role in the app domain (e.g. `.<app>-entry-text`, `.<app>-field-label`, `.<app>-section-heading`).
-* **The Guiding Question:** When adding a new text style, ask: *"What is this text FOR in the app?"* and name it accordingly.
-* **CSS Module Composition:** Import shared typography rules into component CSS using CSS module composition:
-  ```css
-  .itemName {
-    composes: <app>-item-card-name from global;
-    color: var(--color-text-primary);
-  }
-  ```
+* **Central Tokens:** Define all visual values in `src/styles/global/` (`colors.css`, `tokens.css`, `typography.css`, `fonts.css`).
+* **Zero Hardcoded Values:** Never use raw hex colors, pixel sizes, margins, or padding. Reference tokens via `var(--token-name)`.
+* **Text Opacity Rule:** Never use solid hex greys for text. Use alpha transparent white/black (e.g., `rgba(255, 255, 255, 0.96)`, `rgba(255, 255, 255, 0.5)`) for seamless blending across cards and overlays.
+* **Role-Based Typography:** Name utility classes after UI roles (e.g., `.<app>-entry-title`, `.<app>-field-label`), not abstract scales. Compose them in CSS modules (`composes: <app>-entry-title from global;`).
 
 ---
 
-## 3. Domain Rules as Named Modules
+## 3. Domain Logic & Business Rules
 
-* **Isolated Business Logic:** Encapsulate recurring domain rules (e.g., item classification, wear-count calculation) into standalone modules under `src/lib/domain/`.
-* **Database Alignment:** Mirror domain rules in Postgres views or RPC functions whenever SQL queries need to evaluate the exact same business logic, ensuring app and database logic do not drift.
-
----
-
-## 4. Code Commenting Policy
-
-* **Minimal Commenting:** Keep comments to an absolute minimum.
-* **Self-Explaining Code:** Omit comments that describe *what* code does. Write clear variable and function names instead.
-* **Rationales Only:** Reserve comments exclusively for explaining non-obvious *why* rationale, workaround explanations, or external API quirks.
+* **Isolated Modules:** Place pure calculations and business rules in `src/lib/domain/`.
+* **Database Alignment:** Mirror complex rules in Postgres views or RPC functions when queries require identical evaluation.
 
 ---
 
-## 5. Error Handling & Fallbacks Policy
+## 4. Error Handling & Fail Hard Policy
 
-* **No Silent Fallbacks - Always Fail Hard:** Never swallow errors or return dummy fallback values (e.g. empty arrays `[]`, default objects, or silent 0-byte buffers) to mask underlying failures. If a query, function, or API call fails, allow it to fail hard so defects are immediately visible and debuggable.
-* **Strict Environment Variables (No Inline Fallbacks):** Never write inline fallback defaults for environment variables (e.g. `process.env.VAR || 'fallback'`). Environment variables must either be explicitly set in the environment or fail hard immediately if missing. Additional environments or variable branches will be configured explicitly when requested.
-* **User Request Exception:** Implement fallback logic **only** when the user explicitly requests a fallback for a specific feature or UI state.
-
----
-
-## 6. UI Loading States
-
-* **Shimmer Skeletons over Spinners:** Use content-shaped skeleton placeholders rather than generic loading spinners.
-* **Shimmer Animation Standard:** Apply a slow (~2s sweep) animated shimmer effect across a shared CSS class.
-* **Accessibility:** Respect `prefers-reduced-motion` by disabling shimmer animations.
-* **Static Fallbacks:** Only use static skeletons when handing off to a nested loading shell to prevent visual animation restarting glitches.
+* **Fail Hard:** Never swallow errors or return dummy fallbacks (`[]`, `{}`). Unhandled errors must throw explicitly.
+* **Strict Environment Variables:** Never use inline fallbacks (e.g., `process.env.KEY || 'default'`). Fail hard immediately if required variables are missing.
+* **Fallbacks Exception:** Implement fallback logic only when explicitly requested by user.
 
 ---
 
-## 7. Structured Diagnostics & Server-Side Logging
+## 5. UI Loading States
 
-* **Server Log-Rich Design for AI Autonomy:** Emit comprehensive, structured server-side logs (`console.error`, `console.warn`, `console.info`) inside API routes, dispatcher handlers, and serverless functions. Include request parameters, validation details, database operation statuses, and full exception stack traces.
-* **Autonomous AI Debugging:** AI coding agents query server runtime logs directly via log tools (Vercel runtime logs, Supabase log queries) but cannot inspect client-side browser DevTools. Server-side logging empowers AI agents to debug and resolve errors independently without prompting the user to copy-paste browser logs.
-* **Informative API Error Payloads:** Never obscure API errors. Return structured diagnostic JSON responses (e.g., `{ error: "Presigned URL generation failed", details: error.message, route: "upload" }`) so network responses provide immediate, actionable context.
+* **Shimmer Skeletons:** Use content-shaped skeleton placeholders instead of generic spinners.
+* **Animation:** Use a smooth ~2s sweep animation. Respect `prefers-reduced-motion`.
+
+---
+
+## 6. Server Diagnostics & Logging
+
+* **AI Autonomy via Logs:** Emit structured server-side logs (`console.error`, `console.warn`) with request params, validation failures, and full stack traces on all API routes. AI debugs via server logs, not browser DevTools.
+* **Actionable Error Payloads:** Return structured JSON error objects (e.g., `{ error: "Upload failed", details: error.message }`) instead of generic status strings.
+
+---
+
+## 7. Comments Policy
+
+* **Minimal Comments:** Never explain what code does. Use clear naming instead.
+* **Why, Not What:** Reserve comments exclusively for non-obvious rationale, workarounds, or external API constraints.
