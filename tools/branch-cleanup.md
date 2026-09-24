@@ -14,7 +14,7 @@ Only touch these files. Nothing outside scope.
 
 ## Checks
 
-Run each in order. Apply only justified changes - skip a check if nothing in scope qualifies.
+Run each in order. Apply only justified changes - skip a check if nothing in scope qualifies. If your tool supports delegating a check to a subagent or sub-task, do so, passing it the in-scope file list - keeps each check's file-reading out of your own context.
 
 1. `simplify/simplify-code.md`
 2. `simplify/clean-comments.md` - mechanical, delegate to a cheap/small model if your tool supports it

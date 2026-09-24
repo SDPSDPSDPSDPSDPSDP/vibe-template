@@ -1,5 +1,5 @@
 ---
-name: comment-cleaner
+name: clean-comments
 description: Strips or collapses stale/obvious comments in a given set of files. Mechanical pattern-matching only, no design judgment - use for the comment-cleanup step of branch-cleanup. Given a file list, does not decide scope itself.
 model: haiku
 tools: Read, Edit, Grep
