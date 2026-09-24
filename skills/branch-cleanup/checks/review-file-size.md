@@ -11,4 +11,11 @@ For each file in scope exceeding this: audit, split where it makes sense and is 
 
 Apply only to files in scope.
 
-Report what you split per file, into what new files, and what you left alone despite length, with reason.
+## Report
+
+Terse. One line per file. No prose.
+
+```
+file - split into: new files. why.
+file - kept at N LOC. why.
+```

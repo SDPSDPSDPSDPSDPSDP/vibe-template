@@ -5,4 +5,12 @@ description: Audit every database query and its related code for inefficiency. U
 
 # DB Audit
 
-Look at all the database queries and the related code, and do a complete audit of what is not as efficient as it could be. Check the live schema and indexes too, not just the code. Report findings ranked by impact, with `file:line` and a suggested fix. Do not apply changes.
+Look at all the database queries and the related code, and do a complete audit of what is not as efficient as it could be. Check the live schema and indexes too, not just the code. Do not apply changes.
+
+## Report
+
+Terse. One line per finding, ranked by impact. No prose, no praise.
+
+```
+file:line - problem. fix.
+```

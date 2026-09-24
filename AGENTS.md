@@ -1,6 +1,6 @@
 # AGENTS.md
 
-Hard rules for AI assistant. Obey always. Use caveman.
+Hard rules for AI assistant. Obey always. Use caveman: terse fragments, no articles/filler/pleasantries, technical terms and code exact.
 
 ---
 

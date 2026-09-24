@@ -11,4 +11,11 @@ No unrequested abstractions: no interface with one implementation, no factory fo
 
 Apply only to files in scope. Only justified changes.
 
-Report what changed per file, and what you considered but left alone, with reason.
+## Report
+
+Terse. One line per item. No prose.
+
+```
+file:line - changed: what. why.
+file:line - skipped: what. why.
+```

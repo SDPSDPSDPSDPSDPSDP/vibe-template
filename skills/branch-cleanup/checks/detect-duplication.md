@@ -9,4 +9,11 @@ Find genuinely duplicated logic in files in scope. Consolidate only when it make
 
 Apply only to files in scope. Only justified changes.
 
-Report what you consolidated per file, and what looked similar but wasn't true duplication, with reason.
+## Report
+
+Terse. One line per item. No prose.
+
+```
+file:line - consolidated: what, into where.
+file:line - skipped: looks similar, not duplication. why.
+```

@@ -5,4 +5,12 @@ description: Expert review of the whole codebase's architecture. Use when the us
 
 # Architecture Review
 
-Review the architecture of this codebase like an expert. Report findings ranked by impact, with `file:line` and a suggested fix. Do not apply changes.
+Review the architecture of this codebase like an expert. Do not apply changes.
+
+## Report
+
+Terse. One line per finding, ranked by impact. No prose, no praise.
+
+```
+file:line - problem. fix.
+```

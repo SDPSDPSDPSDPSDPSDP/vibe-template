@@ -30,4 +30,13 @@ Run each in order. Apply only justified changes - skip a check if nothing in sco
 
 1. Run typecheck/lint for the project (see project's own docs/AGENTS.md for exact commands).
 2. Review the resulting diff yourself.
-3. Report what changed, file by file, and what was skipped and why.
+3. Report what changed and what was skipped.
+
+## Report
+
+Terse. One line per item, grouped by file. No prose, no praise.
+
+```
+file:line - changed: what. why.
+file:line - skipped: what. why.
+```

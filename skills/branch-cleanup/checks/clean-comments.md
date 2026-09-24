@@ -15,4 +15,12 @@ No behavioral changes. Do not touch code logic beyond splitting for a removed WH
 
 Apply only to files in scope.
 
-Report which comments you removed, collapsed, or kept, per file.
+## Report
+
+Terse. One line per comment. No prose.
+
+```
+file:line - removed: what-comment.
+file:line - collapsed: why-comment.
+file:line - kept: reason.
+```
