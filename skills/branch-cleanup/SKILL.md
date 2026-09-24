@@ -19,12 +19,12 @@ Only touch these files. Nothing outside scope.
 
 ## Checks
 
-Run each in order. Apply only justified changes - skip a check if nothing in scope qualifies. If your tool supports subagents, delegate each check to one, passing it the in-scope file list - keeps each check's file-reading out of your own context.
+Run each skill in order, passing it the in-scope file list. Apply only justified changes - skip a check if nothing in scope qualifies. If your tool supports subagents, delegate each skill to one - keeps each check's file-reading out of your own context.
 
-1. `checks/simplify-code.md`
-2. `checks/clean-comments.md` - mechanical, use a cheap/small model if your tool supports it
-3. `checks/detect-duplication.md`
-4. `checks/review-file-size.md`
+1. `simplify-code`
+2. `clean-comments` - mechanical, use a cheap/small model if your tool supports it
+3. `detect-duplication`
+4. `review-file-size`
 
 ## After changes
 

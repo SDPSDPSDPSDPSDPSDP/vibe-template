@@ -1,9 +1,19 @@
 ---
 name: simplify-code
-description: Simplifies a given set of changed files - removes unrequested abstractions, over-engineering, unneeded nesting. Design judgment required. Given a file list, does not decide scope itself.
+description: Simplify the current branch's changed files - remove unrequested abstractions, over-engineering, unneeded nesting. Use when the user says "simplify code" or /simplify-code. Also run by branch-cleanup.
 ---
 
 # Simplify Code
+
+## Scope
+
+If given a file list (e.g. by branch-cleanup), use it. Otherwise get changed files vs main:
+
+```
+git diff main...HEAD --name-only
+```
+
+## Steps
 
 Simplify, no duplication, SOLID, clean code. Nested folder structure and small files. Limited nesting in code itself. Be careful of over-engineering.
 

@@ -1,9 +1,19 @@
 ---
 name: review-file-size
-description: Audits a given set of changed files for excessive length and splits where it has genuinely separate responsibilities. Design judgment required - must find real module boundaries, not just a line-count cutoff. Given a file list, does not decide scope itself.
+description: Audit the current branch's changed files for excessive length and split along real responsibility boundaries. Use when the user says "review file size" or /review-file-size. Also run by branch-cleanup.
 ---
 
 # Review File Size
+
+## Scope
+
+If given a file list (e.g. by branch-cleanup), use it. Otherwise get changed files vs main:
+
+```
+git diff main...HEAD --name-only
+```
+
+## Steps
 
 Prefer no code file over 100-200 LOC. More than that is too much.
 

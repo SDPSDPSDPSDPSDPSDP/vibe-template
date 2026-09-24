@@ -1,9 +1,19 @@
 ---
 name: clean-comments
-description: Strips or collapses stale/obvious comments in a given set of files. Mechanical pattern-matching only, no design judgment - suits a cheap/small model. Given a file list, does not decide scope itself.
+description: Strip or collapse stale/obvious comments in the current branch's changed files. Mechanical, no design judgment - suits a cheap/small model. Use when the user says "clean comments" or /clean-comments. Also run by branch-cleanup.
 ---
 
 # Clean Comments
+
+## Scope
+
+If given a file list (e.g. by branch-cleanup), use it. Otherwise get changed files vs main:
+
+```
+git diff main...HEAD --name-only
+```
+
+## Steps
 
 Find every comment - single-line `//` and multi-line `/* */` blocks. Grep both patterns, don't rely on single-line regex alone.
 
