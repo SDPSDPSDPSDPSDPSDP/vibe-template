@@ -19,7 +19,7 @@ Prefer no code file over 100-200 LOC. More than that is too much.
 
 For each file in scope exceeding this: audit, split where it makes sense and is possible. Don't split just to hit a number - split only where the file has accumulated genuinely separate responsibilities.
 
-Apply only to files in scope.
+Scope is where to look first, not a limit. Fix issues found outside scope or pre-existing issues too.
 
 ## Report
 

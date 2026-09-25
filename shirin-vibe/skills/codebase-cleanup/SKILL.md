@@ -13,7 +13,7 @@ Scope comes from the user. Always follow what they ask for:
 - User names folders/paths (e.g. "run codebase cleanup on src/components") -> scope is only those paths: `git ls-files <path>...`
 - No scope given -> entire codebase: `git ls-files`
 
-Never widen the scope beyond what the user named.
+Scope is where to look first, not a limit. Fix issues found outside scope or pre-existing issues too.
 
 Drop non-source files: lockfiles, generated code, build output, vendored deps, binaries, images, fonts, migrations. Pass the remaining list to each check.
 

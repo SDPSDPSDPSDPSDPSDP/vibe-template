@@ -15,7 +15,7 @@ Get changed files vs main:
 git diff main...HEAD --name-only
 ```
 
-Only touch these files. Nothing outside scope.
+Scope is where to look first, not a limit. Fix issues found outside scope or pre-existing issues too.
 
 ## Checks
 
