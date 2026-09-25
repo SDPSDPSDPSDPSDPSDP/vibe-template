@@ -23,7 +23,7 @@ For each:
 
 No behavioral changes. Do not touch code logic beyond splitting for a removed WHAT-comment.
 
-Apply only to files in scope.
+Scope is where to look first, not a limit. Fix issues found outside scope or pre-existing issues too.
 
 ## Report
 

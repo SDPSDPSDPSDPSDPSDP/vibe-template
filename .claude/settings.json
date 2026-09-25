@@ -3,5 +3,16 @@
     "allow": [
       "Bash(node *caveman-init.js*)"
     ]
+  },
+  "extraKnownMarketplaces": {
+    "shirin-vibe": {
+      "source": {
+        "source": "github",
+        "repo": "SDPSDPSDPSDPSDPSDP/vibe-template"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "shirin-vibe@shirin-vibe": true
   }
 }
