@@ -1,19 +1,19 @@
 ---
 name: codebase-cleanup
-description: Clean up the entire codebase - simplify, strip stale comments, dedupe, audit file size across all tracked source files, then run architecture review and DB audit. Use when the user says "clean the codebase", "codebase cleanup", "clean everything", or /codebase-cleanup.
+description: Clean up the entire codebase - simplify, strip stale comments, dedupe, audit file size across all tracked source files, then run architecture review and DB audit. Scope defaults to the whole codebase, or a folder/path the user names. Use when the user says "clean the codebase", "codebase cleanup", "clean everything", "run codebase cleanup on <folder>", or /codebase-cleanup.
 ---
 
 # Codebase Cleanup
 
-Clean the whole codebase. Orchestrator - same checks as branch-cleanup, but scope is every tracked source file, not just the branch diff.
+Clean the codebase. Orchestrator - same checks as branch-cleanup, but scope is every tracked source file (or the paths the user names), not just the branch diff.
 
 ## Scope
 
-Get all tracked files:
+Scope comes from the user. Always follow what they ask for:
+- User names folders/paths (e.g. "run codebase cleanup on src/components") -> scope is only those paths: `git ls-files <path>...`
+- No scope given -> entire codebase: `git ls-files`
 
-```
-git ls-files
-```
+Never widen the scope beyond what the user named.
 
 Drop non-source files: lockfiles, generated code, build output, vendored deps, binaries, images, fonts, migrations. Pass the remaining list to each check.
 
@@ -25,12 +25,12 @@ Run each skill in order, passing it the in-scope file list. Apply only justified
 
 1. `simplify-code`
 2. `clean-comments` - mechanical, use a cheap/small model if your tool supports it
-3. `detect-duplication` - look for duplication across the whole codebase, not just within one file
+3. `detect-duplication` - look for duplication across all files in scope, not just within one file
 4. `review-file-size`
 5. `architecture-review` - report only, no fixes. Runs on the cleaned-up code.
 6. `db-audit` - report only, no fixes.
 
-Steps 5-6 cover the whole codebase on their own - no file list needed. Same sequential rule applies: one subagent at a time.
+Steps 5-6 cover the whole codebase by default. If the user named a scope, tell them to limit the review to those paths. Same sequential rule applies: one subagent at a time.
 
 ## After changes
 
