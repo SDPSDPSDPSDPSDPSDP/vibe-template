@@ -2,6 +2,11 @@
   "name": "shirin-vibe",
   "owner": { "name": "SDPSDPSDPSDPSDPSDP" },
   "plugins": [
-    { "name": "shirin-vibe", "source": "./shirin-vibe", "description": "Branch cleanup, architecture review, and DB audit skills." }
+    {
+      "name": "shirin-vibe",
+      "displayName": "Shirin's Vibe",
+      "source": "./shirin-vibe",
+      "description": "Branch cleanup, architecture review, and DB audit skills."
+    }
   ]
 }
