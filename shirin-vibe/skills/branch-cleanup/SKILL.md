@@ -19,7 +19,9 @@ Only touch these files. Nothing outside scope.
 
 ## Checks
 
-Run each skill in order, passing it the in-scope file list. Apply only justified changes - skip a check if nothing in scope qualifies. If your tool supports subagents, delegate each skill to one - keeps each check's file-reading out of your own context.
+Run each skill in order, passing it the in-scope file list. Apply only justified changes - skip a check if nothing in scope qualifies.
+
+**Strictly sequential. Never run checks in parallel.** One check at a time. Wait for it to finish fully before starting the next - each check edits files the next one reads. If your tool supports subagents, delegate each skill to one - keeps each check's file-reading out of your own context - but spawn only one subagent at a time and wait for its result (never background it, never launch two in the same turn).
 
 1. `simplify-code`
 2. `clean-comments` - mechanical, use a cheap/small model if your tool supports it
