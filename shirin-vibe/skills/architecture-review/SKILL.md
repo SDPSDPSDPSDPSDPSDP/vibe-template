@@ -5,7 +5,7 @@ description: Expert review of the whole codebase's architecture. Use when the us
 
 # Architecture Review
 
-Review the architecture of this codebase like an expert. Do not apply changes.
+Review the architecture of this codebase like an expert, including the database architecture. Use the Supabase MCP when available to check the live schema, read-only. Do not apply changes.
 
 ## Report
 

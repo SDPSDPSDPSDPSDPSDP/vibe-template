@@ -5,7 +5,7 @@ description: Audit every database query and its related code for inefficiency. U
 
 # DB Audit
 
-Look at all the database queries and the related code, and do a complete audit of what is not as efficient as it could be. Check the live schema and indexes too, not just the code. Do not apply changes.
+Look at all the database queries and the related code, and do a complete audit of what is not as efficient as it could be. Use the Supabase MCP when available to check the live schema and indexes, read-only. Do not apply changes.
 
 ## Report
 
