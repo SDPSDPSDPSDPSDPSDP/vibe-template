@@ -1,6 +1,6 @@
 ---
 name: codebase-cleanup
-description: Clean up the entire codebase - simplify, strip stale comments, dedupe, audit file size across all tracked source files. Use when the user says "clean the codebase", "codebase cleanup", "clean everything", or /codebase-cleanup.
+description: Clean up the entire codebase - simplify, strip stale comments, dedupe, audit file size across all tracked source files, then run architecture review and DB audit. Use when the user says "clean the codebase", "codebase cleanup", "clean everything", or /codebase-cleanup.
 ---
 
 # Codebase Cleanup
