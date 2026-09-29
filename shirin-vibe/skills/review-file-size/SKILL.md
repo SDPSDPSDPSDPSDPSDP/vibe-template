@@ -15,9 +15,15 @@ git diff main...HEAD --name-only
 
 ## Steps
 
-Prefer no code file over 100-200 LOC. More than that is too much.
+Get oversized and over-nested files from ESLint (`max-lines`, `max-depth`, `complexity` rules in the project config), not by counting:
 
-For each file in scope exceeding this: audit, split where it makes sense and is possible. Don't split just to hit a number - split only where the file has accumulated genuinely separate responsibilities.
+```
+npx eslint --format compact <files in scope>
+```
+
+No ESLint in project -> fall back to `wc -l`, threshold 200 LOC.
+
+For each flagged file: audit, split where it makes sense and is possible. Don't split just to hit a number - split only where the file has accumulated genuinely separate responsibilities.
 
 Scope is where to look first, not a limit. Fix issues found outside scope or pre-existing issues too.
 

@@ -15,6 +15,14 @@ git diff main...HEAD --name-only
 
 ## Steps
 
+Find dead code with a tool first - unused files, exports, dependencies:
+
+```
+npx --yes knip --reporter compact
+```
+
+Grep each finding inside scope before deleting. Knip misreads entry points it has no plugin for (hook scripts, separate workers) as unused. Then:
+
 Simplify, no duplication, SOLID, clean code. Nested folder structure and small files. Limited nesting in code itself. Be careful of over-engineering.
 
 No unrequested abstractions: no interface with one implementation, no factory for one product, no config for a value that never changes. No speculative flexibility for hypothetical future requirements.
