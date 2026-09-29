@@ -14,6 +14,7 @@ Read docs before code, evaluate if needed to open depending on the user's reques
 
 ## Hard Rules
 
+* **Reuse first:** Before writing new function, hook, component, type or util: grep codebase for existing one. Extend it over writing parallel copy. Copy-paste of 5+ lines = extract instead.
 * **Comments:** Minimal. Never explain what code does. Only non-obvious why.
 * **No emojis / em dashes:** Plain hyphens (-) only.
 * **Builds:** No `next build` while `next dev` runs. Corrupts `.next`. Typecheck: `tsc --noEmit`. Python: `mypy` or `ruff`.

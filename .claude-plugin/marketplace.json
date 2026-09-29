@@ -6,7 +6,7 @@
       "name": "shirin-vibe",
       "displayName": "Shirin's Vibe",
       "source": "./shirin-vibe",
-      "description": "Branch cleanup, architecture review, and DB audit skills."
+      "description": "Branch and codebase cleanup (project rules, simplify, comments, dedupe, file size), architecture review, DB audit, plus lint and typecheck hooks."
     }
   ]
 }
