@@ -36,8 +36,7 @@ Steps 6-7 cover the whole codebase by default. If the user named a scope, tell t
 ## After changes
 
 1. Run typecheck/lint for the project (see project's own docs/AGENTS.md for exact commands).
-2. Review the resulting diff yourself.
-3. Report what changed and what was skipped.
+2. Report what changed and what was skipped.
 
 ## Report
 

@@ -31,8 +31,7 @@ Run each skill in order, passing it the in-scope file list. Apply only justified
 ## After changes
 
 1. Run typecheck/lint for the project (see project's own docs/AGENTS.md for exact commands).
-2. Review the resulting diff yourself.
-3. Report what changed and what was skipped.
+2. Report what changed and what was skipped.
 
 ## Report
 
