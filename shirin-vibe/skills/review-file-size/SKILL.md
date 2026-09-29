@@ -1,6 +1,6 @@
 ---
 name: review-file-size
-description: Audit the current branch's changed files for excessive length and split along real responsibility boundaries. Use when the user says "review file size" or /review-file-size. Also run by branch-cleanup.
+description: Split the current branch's changed files over 200 LOC (target 100-200) along real responsibility boundaries. Use when the user says "review file size" or /review-file-size. Also run by branch-cleanup.
 ---
 
 # Review File Size
@@ -15,15 +15,19 @@ git diff main...HEAD --name-only
 
 ## Steps
 
+Target: code files of 100-200 LOC. Over 200 LOC is always too much - that file must be split, no exceptions for "it's still readable".
+
 Get oversized and over-nested files from ESLint (`max-lines`, `max-depth`, `complexity` rules in the project config), not by counting:
 
 ```
 npx eslint --format compact <files in scope>
 ```
 
-No ESLint in project -> fall back to `wc -l`, threshold 200 LOC.
+No ESLint in project -> use `wc -l`, same 200 LOC limit.
 
-For each flagged file: audit, split where it makes sense and is possible. Don't split just to hit a number - split only where the file has accumulated genuinely separate responsibilities.
+For each flagged file: split it. The number decides WHETHER to split; responsibilities decide WHERE. Cut along real boundaries (separate concerns, sub-components, helpers, types) - never mid-function or into arbitrary part1/part2 files.
+
+Only exceptions: generated code, data/constant tables, test fixtures. Report them as kept.
 
 Scope is where to look first, not a limit. Fix issues found outside scope or pre-existing issues too.
 
@@ -33,5 +37,5 @@ Terse. One line per file. No prose.
 
 ```
 file - split into: new files. why.
-file - kept at N LOC. why.
+file - kept at N LOC. exception: generated/data/fixture.
 ```
