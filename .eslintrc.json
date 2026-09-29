@@ -3,6 +3,44 @@
   "rules": {
     "max-lines": ["error", { "max": 200, "skipBlankLines": true, "skipComments": true }],
     "max-depth": ["error", 3],
-    "complexity": ["error", 15]
-  }
+    "complexity": ["error", 15],
+    "no-restricted-syntax": [
+      "error",
+      {
+        "selector": "LogicalExpression[left.object.object.name='process'][left.object.property.name='env']",
+        "message": "Fail hard: no env var fallback. Throw if missing."
+      },
+      {
+        "selector": "LogicalExpression[right.type='ArrayExpression'][right.elements.length=0]",
+        "message": "Fail hard: no empty array fallback."
+      },
+      {
+        "selector": "LogicalExpression[right.type='ObjectExpression'][right.properties.length=0]",
+        "message": "Fail hard: no empty object fallback."
+      },
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b|\\d+px\\b/]",
+        "message": "No raw colors or pixels. Use var(--token)."
+      },
+      {
+        "selector": "TemplateElement[value.raw=/#[0-9a-fA-F]{3,8}\\b|\\d+px\\b/]",
+        "message": "No raw colors or pixels. Use var(--token)."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": ["src/components/ui/**"],
+      "rules": {
+        "no-restricted-imports": [
+          "error",
+          {
+            "patterns": [
+              { "group": ["@/components/domain/*", "@/lib/data/*", "@supabase/*"], "message": "ui/ is dumb primitives only. No data or domain imports." }
+            ]
+          }
+        ]
+      }
+    }
+  ]
 }
