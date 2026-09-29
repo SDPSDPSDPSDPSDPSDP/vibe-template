@@ -5,7 +5,7 @@ description: Clean up the entire codebase - simplify, strip stale comments, dedu
 
 # Codebase Cleanup
 
-Clean the codebase. Orchestrator - same checks as branch-cleanup, but scope is every tracked source file (or the paths the user names), not just the branch diff.
+Clean the codebase. Orchestrator - same checks as branch-cleanup plus `clean-comments`, but scope is every tracked source file (or the paths the user names), not just the branch diff.
 
 ## Scope
 
@@ -24,7 +24,7 @@ Run each skill in order, passing it the in-scope file list. Apply only justified
 **Strictly sequential. Never run checks in parallel.** One check at a time. Wait for it to finish fully before starting the next - each check edits files the next one reads. If your tool supports subagents, delegate each skill to one, but spawn only one subagent at a time and wait for its result (never background it, never launch two in the same turn).
 
 1. `simplify-code`
-2. `clean-comments` - mechanical, use a cheap/small model if your tool supports it
+2. `clean-comments` - run on Sonnet (subagent with `model: sonnet`)
 3. `detect-duplication` - look for duplication across all files in scope, not just within one file
 4. `review-file-size`
 5. `architecture-review` - report only, no fixes. Runs on the cleaned-up code.

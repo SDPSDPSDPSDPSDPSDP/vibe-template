@@ -1,13 +1,14 @@
 ---
 name: clean-comments
-description: Strip or collapse stale/obvious comments in the current branch's changed files. Mechanical, no design judgment - suits a cheap/small model. Use when the user says "clean comments" or /clean-comments. Also run by branch-cleanup.
+description: Strip or collapse stale/obvious comments in the current branch's changed files. Mechanical, no design judgment. Use when the user says "clean comments" or /clean-comments. Also run by codebase-cleanup.
+model: sonnet
 ---
 
 # Clean Comments
 
 ## Scope
 
-If given a file list (e.g. by branch-cleanup), use it. Otherwise get changed files vs main:
+If given a file list (e.g. by codebase-cleanup), use it. Otherwise get changed files vs main:
 
 ```
 git diff main...HEAD --name-only
