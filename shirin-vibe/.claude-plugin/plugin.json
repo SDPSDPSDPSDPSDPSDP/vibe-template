@@ -1,7 +1,7 @@
 {
   "name": "shirin-vibe",
   "displayName": "Shirin's Vibe",
-  "version": "2.2.0",
-  "description": "Branch and codebase cleanup (project rules, simplify, comments, dedupe, file size), architecture review, DB audit, plus lint and typecheck hooks.",
+  "version": "2.3.0",
+  "description": "Branch and codebase cleanup (project rules, simplify, comments, dedupe, file size), architecture review, DB audit, plus typecheck hook.",
   "author": { "name": "SDPSDPSDPSDPSDPSDP" }
 }
